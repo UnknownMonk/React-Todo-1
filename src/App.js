@@ -28,6 +28,33 @@ class App extends React.Component {
     });
   };
 
+  toggleComment = id => {
+    const newTodo = [...this.state.todos];
+    newTodo.map(todo => {
+      if (todo.id === id) {
+        todo.completed = !todo.completed;
+      }
+    });
+
+    this.setState(
+      {
+        todos: newTodo
+      },
+      () => console.log(this.state)
+    );
+  };
+
+  deleteComplete = event => {
+    event.preventDefault();
+
+    const incomplete = [...this.state.todos].filter(todo => {
+      return todo.completed === false;
+    });
+
+    this.setState({
+      todos: incomplete
+    });
+  };
   handlerAddTodo = event => {
     event.preventDefault();
 
@@ -45,14 +72,16 @@ class App extends React.Component {
   };
   render() {
     return (
-      <div className="todo-app center container">
-        <h2>Welcome to your Todo App!</h2>
+      <div className=" todo-app center container">
+        <h2 className="text-blue">Welcome to your Todo App!</h2>
 
-        <TodoList todos={this.state.todos} />
+        <TodoList todos={this.state.todos} toggleComment={this.toggleComment} />
+
         <TodoForm
           clickTodo={this.handlerAddTodo}
           inputValue={this.state.inputText}
           handleInput={this.handleInput}
+          deleteComplete={this.deleteComplete}
         />
       </div>
     );

@@ -1,0 +1,16 @@
+.crossOut {
+  text-decoration: line-through;
+  text-decoration-color: red;
+}
+
+h5 {
+  color: green;
+}
+
+button {
+  background-color: teal;
+  border-style: none;
+  margin: 10px;
+  border-radius: 5px;
+  padding: 10px;
+}
