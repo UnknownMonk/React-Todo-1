@@ -31,18 +31,17 @@ class App extends React.Component {
   handlerAddTodo = event => {
     event.preventDefault();
 
-    if (this.state.inputText)
-      this.setState({
-        todos: [
-          ...this.state.todos,
-          {
-            task: this.state.inputText,
-            id: Math.random(10),
-            completed: false
-          }
-        ],
-        inputText: ''
-      });
+    this.setState({
+      todos: [
+        ...this.state.todos,
+        {
+          task: this.state.inputText,
+          id: Math.random(10),
+          completed: false
+        }
+      ],
+      inputText: ''
+    });
   };
   render() {
     return (
